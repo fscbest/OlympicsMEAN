@@ -16,4 +16,13 @@ app.get("/sports", (request, response) => {
     });
 });
 
+
+
+
+
+
+/*app.get('/user/:id', function(req, res){
+    res.send('user hello ' + req.params.id);
+});*/
+
 app.listen(8181, () => console.log("Listening on 8181"));
