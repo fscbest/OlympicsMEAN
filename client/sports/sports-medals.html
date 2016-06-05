@@ -2,15 +2,17 @@
 
 <table class="table">
     <thead>
-        <th>Year</th>
-        <th>Division</th>
-        <th>Country</th>
+    <th>Year</th>
+    <th>Division</th>
+    <th>Country</th>
     </thead>
     <tbody>
-        <tr ng-repeat="medal in sportCtrl.sport.goldMedals">
-            <td>{{medal.year}}</td>
-            <td>{{medal.division}}</td>
-            <td>{{medal.country}}</td>
-        </tr>
+    <tr ng-repeat="medal in sportCtrl.sport.goldMedals">
+        <td>{{medal.year}}</td>
+        <td>{{medal.division}}</td>
+        <td>{{medal.country}}</td>
+    </tr>
     </tbody>
 </table>
+
+<a class="btn" ui-sref="sports.new({sportName: sportCtrl.sport.name})">New Medal</a>
