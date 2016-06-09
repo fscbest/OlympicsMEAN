@@ -7,6 +7,9 @@ mongoUtil.connect();
 
 app.use(express.static(__dirname + "/../client"));
 
+let bodyParser = require("body-parser");
+let jsonParser = bodyParser.json();
+
 app.get("/sports", (request, response) => {
     let sports = mongoUtil.sports();
     sports.find().toArray((err, docs) => {
@@ -35,7 +38,15 @@ app.get("/sports/:name", (request, response) => {
 
 });
 
+app.post('/sports/:name/medals', jsonParser, (request, response) => {
+    let sportName = request.params.name;
+    let newMedal = request.body.medal;
 
+    console.log("Sport name: ", sportName);
+    console.log("medal: ", newMedal);
+
+    response.sendStatus(201);
+});
 
 
 /*app.get('/user/:id', function(req, res){
