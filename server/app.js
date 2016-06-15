@@ -42,6 +42,16 @@ app.post('/sports/:name/medals', jsonParser, (request, response) => {
     let sportName = request.params.name;
     let newMedal = request.body.medal;
 
+    let sports = mongoUtil.sports();
+    let query = {name: sportName};
+    let update = {$push: {goldMedals: newMedal}}
+    sports.findOneAndUpdate(query, update, (err, res) => {
+        if(err) {
+            response.sendStatus(400);
+        }
+        response.sendStatus(201);
+    });
+
     console.log("Sport name: ", sportName);
     console.log("medal: ", newMedal);
 
